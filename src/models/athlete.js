@@ -15,10 +15,8 @@ const AthleteSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  measure: {
-    monitoring: [],
-    periodic: [],
-  },
+  measure_monitoring: [],
+  measure_periodic: [],
 });
 
 const Athlete = mongoose.model('Athlete', AthleteSchema);

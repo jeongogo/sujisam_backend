@@ -116,11 +116,13 @@ export const update = async (ctx) => {
 
 export const writeMeasure = async (ctx) => {
   const { id } = ctx.params;
-  const { date, monitoring, periodic } = ctx.request.body;
+  const { category } = ctx.params;
+  const data = ctx.request.body;
+  const measure = 'measure_' + category;
   try {
     const athlete = await Athlete.findByIdAndUpdate(id, {
       $push: {
-        measure: { date: date, monitoring: monitoring, periodic: periodic },
+        [measure]: data,
       },
     }).exec();
     if (!athlete) {

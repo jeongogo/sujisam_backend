@@ -7,7 +7,7 @@ const athletes = new Router();
 athletes.get('/', athletesCtrl.list);
 athletes.get('/count', athletesCtrl.count);
 athletes.get('/search', athletesCtrl.search);
-athletes.post('/', /*checkLoggedIn,*/ athletesCtrl.write);
+athletes.post('/', checkLoggedIn, athletesCtrl.write);
 athletes.get('/:id', athletesCtrl.getAthleteById, athletesCtrl.read);
 athletes.delete(
   '/:id',
@@ -22,6 +22,6 @@ athletes.patch(
   athletesCtrl.update,
 );
 
-athletes.post('/:id/write', checkLoggedIn, athletesCtrl.writeMeasure);
+athletes.post('/:id/write/:category', athletesCtrl.writeMeasure);
 
 export default athletes;
